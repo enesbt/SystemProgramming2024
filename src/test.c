@@ -5,8 +5,15 @@
 #include <unistd.h>
 #include <string.h>
 
+#include "komut.h"
+//dosya isimlerini argv al
+//satir satir oku
+//komuta göre sonuc dosyasına yaz
+
 int main(int argc, char **argv)
 {
+  test();
+  printf("test bitt\n");
   IS is;
   int i;
 
