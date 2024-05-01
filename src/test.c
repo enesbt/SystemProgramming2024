@@ -12,27 +12,48 @@
 
 int main(int argc, char **argv)
 {
-  test();
-  printf("test bitt\n");
+  
   IS is;
   int i;
+  int fd,sz;
+  
+  
+  //sz = write(fd, "aaaabbbcckc ss kkk", strlen("aaaabbbkcckc ss kkk"));
 
-  //if (argc != 2) { fprintf(stderr, "usage: printwords filename\n"); exit(1); }
+  if(argc  !=  2 ){
+    fprintf(stderr, "Eksik girildi, varsayilan dosyalar kullaniliyor.");
+    is = new_inputstruct("giris.dat");
+    fd = open("./cikis.dat",O_RDWR|O_CREAT|O_TRUNC);
+  }else{
+    is  = new_inputstruct(argv[1]);
+    fd = open(argv[2],O_RDWR|O_CREAT|O_TRUNC);
+  }
+  
  
   /* Open the file as an inputstruct.  Error check. */
 
-  is = new_inputstruct(argv[1]);
-  if (is == NULL) {
-    perror(argv[1]);
-    exit(1);
-  }
+  //is = new_inputstruct(argv[1]);
+  // if (is == NULL) {
+  //   perror(argv[1]);
+  //   exit(1);
+  // }
 
   /* Read each line with get_line().  Print out each word. */
+  int adet = 0;
+  char *karakter;
 
   while(get_line(is) >= 0) {
-    for (i = 0; i < is->NF; i++) {
-      printf("%d: %s\n", is->line, is->fields[i]);
-    }
+    if(strcmp(is->fields[0],"yaz:")==0)
+        {
+            printf("yaz\n");
+            for (i = 1; i < is->NF; i++) 
+            {
+                adet = atoi(is->fields[i]);
+                karakter = is->fields[++i];
+                
+            }
+            
+        }
   }
 
   /* Free up the memory allocated with new_inputstruct, and
@@ -42,10 +63,7 @@ int main(int argc, char **argv)
   jettison_inputstruct(is);
   // int fd;
 
-  int fd,sz;
-  fd = open("./sonuc.txt",O_RDWR|O_CREAT|O_TRUNC);
   
-  sz = write(fd, "aaaabbbcckc ss kkk", strlen("aaaabbbkcckc ss kkk"));
 
 
 
