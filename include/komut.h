@@ -2,5 +2,5 @@
 #define KOMUT_H
 
 #include <stdio.h>
-void test();
+void yaz(int fd ,char* c,int count);
 #endif
