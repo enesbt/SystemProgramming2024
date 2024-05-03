@@ -1,4 +1,4 @@
-yaz: 10 a 8 \n 4 r 6 u
+yaz: 10 a 8 \n 2 \b 4 r 3 \b 6 u
 sil: 4 a
 sonagit:
 dur:

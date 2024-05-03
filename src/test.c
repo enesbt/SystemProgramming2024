@@ -10,6 +10,13 @@
 // satir satir oku
 // komuta göre sonuc dosyasına yaz
 
+void tersine_cevir(char *karakter_dizisi) {
+    char temp = karakter_dizisi[0];
+    karakter_dizisi[0] = karakter_dizisi[1];
+    karakter_dizisi[1] = '/';
+  
+}
+
 int main(int argc, char **argv)
 {
 
@@ -39,9 +46,10 @@ int main(int argc, char **argv)
   //  }
 
   /* Read each line with get_line().  Print out each word. */
+
   int adet = 0;
   char *karakter;
-
+  char *karakter2;
   while (get_line(is) >= 0)
   {
     if (strcmp(is->fields[0], "yaz:") == 0)
@@ -51,18 +59,49 @@ int main(int argc, char **argv)
       {
         adet = atoi(is->fields[i]);
         karakter = is->fields[++i];
-
+        if(strlen(karakter)==2)
+        {
+          karakter2  = karakter;
+          tersine_cevir(karakter2);
+          printf("karakter2:%s uzunluk:%ld\n",karakter2,strlen(karakter2));
+        }
+       
         int j;
-        if (karakter== "\n")
+        int result = strcmp(karakter, "\n");
+         
+       
+        if (strcmp(karakter, "n/") == 0) 
+        {
+          printf("girdi\n");
           for (j = 0; j < adet; j++)
+          {
             write(fd, "\n", strlen("\n"));
-        else if (karakter== "\b")
+
+          }
+           
+        }   
+        else if(strcmp(karakter,"b/")==0)
+        {
           for (j = 0; j < adet; j++)
+          {
             write(fd, "\b", strlen("\b"));
-        else
-          for (j = 0; j < adet; j++)
+
+          }
+        }
+         else{
+         for (j = 0; j < adet; j++)
+          {
             write(fd, karakter, strlen(karakter));
 
+          }
+       
+       }
+          
+          
+        // else if (strcmp(karakter,"\b")==0)
+        //   for (j = 0; j < adet; j++)
+        //     write(fd, karakter, 3);
+      
         // yaz(fd,karakter, adet);
         //  yaz(fd, "b", adet);
         //  yaz(fd, "\n",adet);
