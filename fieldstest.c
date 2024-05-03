@@ -35,8 +35,9 @@ int main(int argc, char **argv)
             {
                 adet = atoi(is->fields[i]);
                 karakter = is->fields[++i];
-                printf("adet:%d\n",adet);
-                printf("karakter:%s\n",karakter);
+                // printf("adet:%d\n",adet);
+                // printf("karakter:%s\n",karakter);
+                yaz();
             }
             
         }

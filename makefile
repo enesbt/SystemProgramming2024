@@ -8,7 +8,7 @@ clean:
 	rm -f bin/* 
 
 CC = gcc
-CFLAGS = -g -I./Libfdr/include -I./include
+CFLAGS = -g -I ./Libfdr/include -I./include
 LDFLAGS = -g
 
 
